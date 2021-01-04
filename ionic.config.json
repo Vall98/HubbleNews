@@ -1,0 +1,7 @@
+{
+  "name": "HubbleNews",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
