@@ -9,12 +9,11 @@
     background-size: contain;
     position:absolute;             /* position in the center of the screen */
     left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:175px;                   /* text area width */
+    top:70%;
+    width:45%;                   /* text area width */
     text-align:center;
-    padding:215px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-170px 0px 0px -87px;  /* offset vertical: half of image height and text area height */
+    padding:45% 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-45% 0px 0px -22%;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
 
