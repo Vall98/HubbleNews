@@ -1,0 +1,45 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Portrait layout (default) */
+.loading {
+    background:url(../../assets/logo.png) no-repeat center top; /* 170px x 200px */
+    background-size: contain;
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:175px;                   /* text area width */
+    text-align:center;
+    padding:215px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-170px 0px 0px -87px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+.event {
+    border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+#deviceready.ready .event.listening { display: none; }
+#deviceready.ready .event.received { display: block; }
