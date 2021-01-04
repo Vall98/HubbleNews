@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HubbleNews</string>
+    <string name="title_activity_main">HubbleNews</string>
+    <string name="package_name">net.hubblenews.app</string>
+    <string name="custom_url_scheme">net.hubblenews.app</string>
+</resources>
