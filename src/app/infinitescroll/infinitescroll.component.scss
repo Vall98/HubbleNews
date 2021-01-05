@@ -1,0 +1,35 @@
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.image-container {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+}
+
+.thumbnail {
+    width: 400px;
+    height: 400px;
+}
+
+.image-click {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    display: none;
+}
+
+.image-click:hover {
+    display: block;
+}
+
+.thumbnail:hover + .image-click {
+    display: block;
+}

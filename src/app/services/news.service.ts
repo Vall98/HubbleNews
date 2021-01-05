@@ -28,5 +28,6 @@ export class News {
   publication: string;
   mission: string;
   abstract: string;
-  thumbnail: string;
+  thumbnail_2x: string;
+  keystone_image_2x: string;
 }

@@ -20,10 +20,12 @@ export class InfinitescrollComponent implements OnInit {
 
   news: News[] = [];
   page: number = 1;
+  
+  pos: number = 0;
+  font: number = 0;
 
   loadData(event) {
     this.newsService.loadData(this.page).subscribe((allnews: News[]) => {
-      console.log(allnews);
       if (event != undefined && allnews == []) {
         event.target.disabled = true;
         return;
@@ -48,8 +50,8 @@ export class InfinitescrollComponent implements OnInit {
     })
   }
 
-  swipe(event, data: News) {
-    console.log(event);
+  swipe(list, data: News) {
+    list.closeSlidingItems();
     this.browserTab.isAvailable().then(isAvailable => {
       if (isAvailable) {
         this.browserTab.openUrl(data.url);
@@ -61,4 +63,8 @@ export class InfinitescrollComponent implements OnInit {
     });
   }
 
+  drag(event) {
+    this.pos = event.detail.amount;
+    this.font = (this.pos / 10);
+  }
 }

@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { InfinitescrollComponent } from './infinitescroll/infinitescroll.component';
 import { BrowserTab } from '@ionic-native/browser-tab/ngx';
+import { NewsdetailsComponent } from './newsdetails/newsdetails.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserTab } from '@ionic-native/browser-tab/ngx';
     LoadingComponent,
     HomeComponent,
     SigninComponent,
-    InfinitescrollComponent
+    InfinitescrollComponent,
+    NewsdetailsComponent
   ],
   entryComponents: [],
   imports: [CommonModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],

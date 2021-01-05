@@ -1,22 +1,26 @@
-<ion-list>
-  <ion-item-sliding>
-    
+<ion-list #list>
+  <ion-item-sliding (ionDrag)="drag($event, new)" *ngFor="let new of news">
+    <ion-item>
+      <ion-card style="width: 100%; text-align: center;">
+        <ion-card-header>
+          <ion-card-title>{{new.name}}</ion-card-title>
+          <div routerLink="/newsdetails" [state]="{ news: new }" class="image-container">
+            <img class="thumbnail" [src]="new.thumbnail_2x"/>
+            <img class="image-click" src="../../assets/img/click.png"/>
+          </div>
+          <ion-card-subtitle>{{new.mission}} - {{new.publication | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+          <ion-card-subtitle>Swipe to the left to access article</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </ion-item>
+    <ion-item-options style="width: 35%;" (ionSwipe)="swipe(list, new)">
+      <div style="width: 100%;">
+        <p class="vertical-center" style="margin-left: calc(100% - {{pos}}px); text-align: left; font-size: {{font}}px;">Access article</p>
+      </div>
+    </ion-item-options>
   </ion-item-sliding>
 </ion-list>
 
-<ion-item-sliding *ngFor="let new of news">
-  <ion-item>
-    <ion-card style="width: 100%;">
-      <ion-card-header>
-        <ion-card-title>{{new.name}}</ion-card-title>
-        <img [src]="new.thumbnail"/>
-        <ion-card-subtitle>{{new.mission}} - {{new.publication | date:'dd/MM/yyyy'}}</ion-card-subtitle>
-      </ion-card-header>
-    </ion-card>
-  </ion-item>
-  <ion-item-options style="width: 35%;" (ionSwipe)="swipe($event, new)">
-  </ion-item-options>
-</ion-item-sliding>
 
 
 <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">

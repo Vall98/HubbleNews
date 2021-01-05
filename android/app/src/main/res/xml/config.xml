@@ -6,5 +6,10 @@
     <param name="android-package" value="com.google.cordova.plugin.browsertab.BrowserTab"/>
   </feature>
 
+  <feature name="TTS">
+    <param name="android-package" value="com.wordsbaking.cordova.tts.TTS"/>
+    <param name="onload" value="true"/>
+  </feature>
+
   
 </widget>
