@@ -1,17 +1,12 @@
 <ion-list>
-  <!--ion-card *ngFor="let new of news">
+  <ion-card *ngFor="let new of news">
     <ion-card-header>
       <ion-card-title>{{new.name}}</ion-card-title>
+      <img [src]="new.thumbnail"/>
       <ion-card-subtitle>{{new.mission}} - {{new.publication | date:'dd/MM/yyyy'}}</ion-card-subtitle>
     </ion-card-header>
   
-    <img [src]="new.thumbnail"/>
-  </ion-card-->
-  <ion-item *ngFor="let new of news">
-    <ion-label>{{new.name}}</ion-label>
-    <ion-label>{{new.mission}} - {{new.publication | date:'dd/MM/yyyy'}}</ion-label>
-    <img [src]="new.thumbnail"/>
-  </ion-item>
+  </ion-card>
 </ion-list>
 
 <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">

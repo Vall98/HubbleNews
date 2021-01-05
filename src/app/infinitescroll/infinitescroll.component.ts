@@ -21,16 +21,22 @@ export class InfinitescrollComponent implements OnInit {
   page: number = 1;
 
   loadData(event) {
-    this.newsService.loadData(this.page).subscribe((allnews) => {
+    this.newsService.loadData(this.page).subscribe((allnews: News[]) => {
       console.log(allnews);
       if (event != undefined && allnews == []) {
         event.target.disabled = true;
         return;
       }
       this.page += 1;
+      let dataLen: number = this.news.length;
       for (let newData of allnews) {
         this.newsService.loadNew(newData.news_id).subscribe((onenew) => {
           this.news.push(onenew);
+          if (this.news.length == dataLen + allnews.length) {
+            this.news.sort(function (a, b) {
+              return new Date(b.publication).getTime() - new Date(a.publication).getTime();
+            });
+          }
         })
       }
       if (event != undefined) {
