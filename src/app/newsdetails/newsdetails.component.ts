@@ -45,12 +45,12 @@ export class NewsdetailsComponent implements OnInit {
   startTTS() {
     //this.stopTTS()
     TextToSpeech.speak({
-      text: "This is a sample text.",
+      text: this.data.abstract,
       locale: "en_US",
-      speechRate: 1.0,
+      speechRate: 0.7,
       pitchRate: 1,
       volume: 1.0,
-      voice: 10,
+      voice: 1,
       category: "ambient",
     });
   }
