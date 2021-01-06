@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalsService } from '../services/modals.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,14 +7,9 @@ import { UserService } from '../services/user.service';
 })
 export class ToolbarComponent implements OnInit {
   
-  constructor(public userService: UserService, private modalsService: ModalsService) { }
+  constructor() { }
 
   ngOnInit() {
     
   }
-
-  signin(): void {
-    this.modalsService.signin();
-  }
-
 }

@@ -6,6 +6,7 @@ import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
 
 import com.getcapacitor.community.tts.TextToSpeech;
+import com.getcapacitor.community.audio.nativeaudio.NativeAudio;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class MainActivity extends BridgeActivity {
       // Additional plugins you've installed go here
       // Ex: add(TotallyAwesomePlugin.class);
       add(TextToSpeech.class);
+      add(NativeAudio.class);
     }});
   }
 }

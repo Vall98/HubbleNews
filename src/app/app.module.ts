@@ -18,6 +18,7 @@ import { SigninComponent } from './signin/signin.component';
 import { InfinitescrollComponent } from './infinitescroll/infinitescroll.component';
 import { NewsdetailsComponent } from './newsdetails/newsdetails.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     SigninComponent,
     InfinitescrollComponent,
     NewsdetailsComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    MenuComponent
   ],
   entryComponents: [],
   imports: [CommonModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],

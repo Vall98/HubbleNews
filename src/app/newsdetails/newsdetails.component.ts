@@ -2,11 +2,11 @@ import "@capacitor-community/text-to-speech";
 
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
 import { News } from '../services/news.service';
+import { TTSService } from "../services/tts.service";
 
 import { Plugins } from "@capacitor/core";
-const { TextToSpeech } = Plugins;
+const { Browser } = Plugins;
 
 @Component({
   selector: 'app-newsdetails',
@@ -15,43 +15,27 @@ const { TextToSpeech } = Plugins;
 })
 export class NewsdetailsComponent implements OnInit {
 
-  constructor(private router: Router, public platform: Platform) { }
+  constructor(private router: Router, private ttsService: TTSService) { }
 
   data: News;
 
   ngOnInit() {
-    if (!this.platform.is("desktop")) {
-      TextToSpeech.openInstall();
-    }
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd){
         if (val.url == "/newsdetails") {
          this.data = history.state.news;
-         this.startTTS();
+         this.ttsService.startTTS(this.data);
          if (this.data.news_id == undefined) {
            this.router.navigateByUrl('/home');
          }
         } else {
-          this.stopTTS();
+          this.ttsService.stopTTS();
         }
       }
     });
   }
 
-  stopTTS() {
-    TextToSpeech.stop();
-  }
-
-  startTTS() {
-    //this.stopTTS()
-    TextToSpeech.speak({
-      text: this.data.abstract,
-      locale: "en_US",
-      speechRate: 0.7,
-      pitchRate: 1,
-      volume: 1.0,
-      voice: 1,
-      category: "ambient",
-    });
+  click() {
+    Browser.open({ url: this.data.url });
   }
 }

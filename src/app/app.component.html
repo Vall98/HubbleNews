@@ -1,7 +1,7 @@
 <ion-app>
   <div *ngIf="loadingService.touched">
     <app-toolbar></app-toolbar>
-    <ion-router-outlet style="top: 56px;" animated="true"></ion-router-outlet>
+    <ion-router-outlet animated="true" id="main-router"></ion-router-outlet>
   </div>
   <app-loading *ngIf="!loadingService.touched"></app-loading>
 </ion-app>
