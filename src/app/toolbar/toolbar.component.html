@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!userService.connected" (click)="signin()">Signin</ion-button>
+      <ion-avatar *ngIf="userService.connected" class="avatar">
+        <img [src]="userService.user.img">
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

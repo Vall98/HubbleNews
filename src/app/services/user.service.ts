@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  url: string = "https://ts3.wondercube.fr/";
+  url: string = "https://ts3.wondercube.fr/api/";
   credentials = {withCredentials: true};
   meObsrv: Observable<any>;
 
@@ -47,10 +47,10 @@ export class UserService {
   updateUser(password: string, newPass: string, email: string): Observable<any> {
     return this.http.post(this.url + "user/update", { oldPass: password, newPass: newPass, email: email }, this.credentials);
   }
-
 }
 
 export class User {
   username: string;
   email: string;
+  img: string;
 }

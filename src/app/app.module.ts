@@ -16,8 +16,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { InfinitescrollComponent } from './infinitescroll/infinitescroll.component';
-import { BrowserTab } from '@ionic-native/browser-tab/ngx';
 import { NewsdetailsComponent } from './newsdetails/newsdetails.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +26,14 @@ import { NewsdetailsComponent } from './newsdetails/newsdetails.component';
     HomeComponent,
     SigninComponent,
     InfinitescrollComponent,
-    NewsdetailsComponent
+    NewsdetailsComponent,
+    ToolbarComponent
   ],
   entryComponents: [],
   imports: [CommonModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     StatusBar,
     SplashScreen,
-    BrowserTab,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

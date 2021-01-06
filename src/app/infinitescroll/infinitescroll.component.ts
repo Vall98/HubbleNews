@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonInfiniteScroll } from '@ionic/angular';
-import { BrowserTab } from '@ionic-native/browser-tab/ngx';
 import { News, NewsService } from '../services/news.service';
+
+import { Plugins } from '@capacitor/core';
+const { Browser } = Plugins;
 
 
 @Component({
@@ -12,7 +14,7 @@ import { News, NewsService } from '../services/news.service';
 export class InfinitescrollComponent implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   
-  constructor(private newsService: NewsService, private browserTab: BrowserTab) { }
+  constructor(private newsService: NewsService) { }
 
   ngOnInit() {
     this.loadData(undefined);
@@ -52,15 +54,7 @@ export class InfinitescrollComponent implements OnInit {
 
   swipe(list, data: News) {
     list.closeSlidingItems();
-    this.browserTab.isAvailable().then(isAvailable => {
-      if (isAvailable) {
-        this.browserTab.openUrl(data.url);
-      } else {
-        window.open(data.url, "_blank");
-      }
-    }).catch((err) => {
-      window.open(data.url, "_blank");
-    });
+    Browser.open({ url: data.url });
   }
 
   drag(event) {

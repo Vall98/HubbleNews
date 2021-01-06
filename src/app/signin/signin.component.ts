@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalsService } from '../services/modals.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private userservice: UserService) { }
+  constructor(private userservice: UserService, private modalsService: ModalsService) { }
 
   username: string = "";
   password: string = "";
@@ -27,6 +28,10 @@ export class SigninComponent implements OnInit {
       this.err = err.error.message;
     });
     this.password = '';
+  }
+
+  signup() {
+    this.modalsService.signup();
   }
 
 }

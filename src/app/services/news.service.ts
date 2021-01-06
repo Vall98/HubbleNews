@@ -9,7 +9,7 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  url: string = "https://ts3.wondercube.fr/hubblesite/";
+  url: string = "https://ts3.wondercube.fr/api/hubblesite/";
 
   loadData(page: number): Observable<any> {
     return this.http.get(this.url + "news?page=" + page);
