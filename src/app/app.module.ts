@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -19,6 +20,7 @@ import { InfinitescrollComponent } from './infinitescroll/infinitescroll.compone
 import { NewsdetailsComponent } from './newsdetails/newsdetails.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,22 @@ import { MenuComponent } from './menu/menu.component';
     LoadingComponent,
     HomeComponent,
     SigninComponent,
+    SignupComponent,
     InfinitescrollComponent,
     NewsdetailsComponent,
     ToolbarComponent,
     MenuComponent
   ],
   entryComponents: [],
-  imports: [CommonModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

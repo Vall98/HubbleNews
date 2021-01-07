@@ -29,4 +29,8 @@ export class MenuComponent implements OnInit {
   speakerVolumeChange() {
     this.ttsService.changeSpeakerVolume(this.speakerVolume);
   }
+
+  accessProfile() {
+
+  }
 }

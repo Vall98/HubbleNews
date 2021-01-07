@@ -28,13 +28,15 @@ export class SignupComponent implements OnInit {
       this.err = "Les mots de passe ne correspondent pas.";
       return;
     }
-    this.userservice.signup(this.username, this.email, this.password).subscribe( (data) => {
+    this.userservice.signup(this.username, this.email, this.password).subscribe((data) => {
+      this.userservice.connected = true;
+      this.userservice.user = data.user;
+      this.userservice.saveToken(data.token);
       this.username = "";
       this.email = "";
       //this.alertService.set("success", "Votre compte a été créé !", 2000);
       this.modalsService.signupModal.dismiss();
     }, (err) => {
-      if (err.error.message === "Missing credentials") err.error.message = "Veuillez remplir le formulaire.";
       this.err = err.error.message;
     });
     this.password = '';

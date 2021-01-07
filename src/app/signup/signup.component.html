@@ -1,14 +1,14 @@
 <div>
   <a>{{err}}</a><br/>
-  <form>
-    <ion-input type="text" name="user" placeholder="Username" [(ngModel)]="username"></ion-input>
-    <ion-input type="text" name="email" placeholder="Email" [(ngModel)]="email"></ion-input>
-    <ion-input type="password" name="pass" placeholder="Mot de passe" [(ngModel)]="password"></ion-input>
-    <ion-input type="password" name="pass2" placeholder="Confirmation du mot de passe" [(ngModel)]="passcheck"></ion-input>
-    <ion-button (click)="signup()" type="submit">Inscription</ion-button>
+  <form #form="ngForm" (ngSubmit)="signup()">
+    <ion-input type="text" name="user" placeholder="Username" [(ngModel)]="username" required></ion-input>
+    <ion-input type="text" name="email" placeholder="Email" [(ngModel)]="email" required></ion-input>
+    <ion-input type="password" name="pass" placeholder="Password" [(ngModel)]="password" required></ion-input>
+    <ion-input type="password" name="pass2" placeholder="Password check" [(ngModel)]="passcheck" required></ion-input>
+    <ion-button [disabled]="form.invalid" type="submit" block>Signup</ion-button>
   </form>
   <p>
-      Déjà inscrit ? - 
-    <a (click)="signin()">Se connecter</a>
+      Already registered ? - 
+    <a class="pointer" (click)="signin()">Signin</a>
   </p>
 </div>

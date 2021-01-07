@@ -1,28 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { News } from './news.service';
 
 import { Plugins } from "@capacitor/core";
 const { NativeAudio } = Plugins;
 
-const AUDIO_SRC = "../assets/sounds/Sci-fi_Pulse_Loop.wav";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicService {
-
+  
   constructor(private platform: Platform) {
-    this.loadMusic();
   }
-
+  
+  AUDIO_SRC = this.platform.is("android") ?  "scifi_pulse_loop" : "../../assets/sounds/Sci-fi_Pulse_Loop.wav";
   musicVolume: number = 0.5;
   audio: HTMLAudioElement;
 
   loadMusic() {
     if (!this.platform.is("desktop")) {
       NativeAudio.preloadComplex({
-        assetPath: AUDIO_SRC,
+        assetPath: this.AUDIO_SRC,
         assetId: "audio",
         volume: this.musicVolume,
         audioChannelNum: 1
@@ -30,7 +28,7 @@ export class MusicService {
       NativeAudio.loop({assetId: "audio"});
     } else {
       this.audio = new Audio();
-      this.audio.src = AUDIO_SRC;
+      this.audio.src = this.AUDIO_SRC;
       this.audio.loop = true;
       this.audio.volume = this.musicVolume;
       this.audio.load();

@@ -6,7 +6,7 @@ import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.Plugin;
 
 import com.getcapacitor.community.tts.TextToSpeech;
-import com.getcapacitor.community.audio.nativeaudio.NativeAudio;
+import com.getcapacitor.community.audio.NativeAudio;
 
 import java.util.ArrayList;
 

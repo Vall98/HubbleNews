@@ -4,10 +4,27 @@
     <div class="signin" *ngIf="!userService.connected">
       <ion-button fill="outline" style="margin: auto;" (click)="signin()">Signin</ion-button>
     </div>
-    <div *ngIf="userService.connected">
-      <ion-avatar class="avatar">
-        <img [src]="userService.user.img">
-      </ion-avatar>
+    <div *ngIf="userService.connected" style="width: 85%; margin: auto;">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <ion-avatar class="avatar">
+              <img [src]="userService.user.img">
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="8">
+            <div class="profile-container">
+              <div class="center-profile">
+                {{userService.user.username}}
+                <p style="margin-top: 5px;">
+                  <a class="pointer" (click)="accessProfile()">See profile</a>
+                </p>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <a class="pointer logout" (click)="userService.logout()">Logout</a>
     </div>
     <ion-range pin="true" min="0" max="100" color="secondary" [(ngModel)]="music" (ionChange)="musicChange()">
       <ion-label slot="start">Music</ion-label>
@@ -23,7 +40,7 @@
       <ion-list-header>
         <ion-label>Speaker's voice</ion-label>
       </ion-list-header>
-      <ion-item *ngIf="ttsService.voices.length > 0">
+      <ion-item *ngIf="ttsService.voices && ttsService.voices.length > 0">
         <ion-select interface="action-sheet" [value]="ttsService.voice" okText="Select" cancelText="Dismiss" [(ngModel)]="ttsService.voice">
           <ion-select-option *ngFor="let v of ttsService.voices; let i = index" [value]="i">{{v.name}}</ion-select-option>
         </ion-select>

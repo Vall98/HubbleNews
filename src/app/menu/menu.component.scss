@@ -7,3 +7,25 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.avatar {
+    background-color: aliceblue;
+}
+
+.profile {
+    margin-bottom: 10px;
+}
+
+.logout {
+    margin-left: 18px;
+}
+
+.profile-containeer {
+    position: relative;
+}
+
+.center-profile {
+    margin: 0;
+    position: absolute;
+    top: calc(50% - 20px);
+}

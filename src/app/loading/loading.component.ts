@@ -16,7 +16,9 @@ export class LoadingComponent implements OnInit {
 
   ngOnInit() {
     this.plt.ready().then((readySource) => {
-      this.userService.waitConnectionChecked().subscribe((data) => this.setReady(readySource), (err) => this.setReady(readySource));
+      this.userService.tokenObsrv.then(() => {
+        this.userService.waitConnectionChecked().subscribe((data) => this.setReady(readySource), (err) => this.setReady(readySource));
+      })
     });
   }
 

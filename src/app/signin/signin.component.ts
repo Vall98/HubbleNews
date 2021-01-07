@@ -20,11 +20,12 @@ export class SigninComponent implements OnInit {
   signin() {
     this.userservice.signin(this.username, this.password).subscribe((data) => {
       this.userservice.connected = true;
-      this.userservice.user = data;
-      //this.alertService.set("success", "Vous êtes connecté !", 2000);
+      this.userservice.user = data.user;
+      this.userservice.saveToken(data.token);
       this.username = "";
+      //this.alertService.set("success", "Vous êtes connecté !", 2000);
+      this.modalsService.signinModal.dismiss();
     }, (err) => {
-      if (err.error.message === "Missing credentials") err.error.message = "Veuillez remplir le formulaire.";
       this.err = err.error.message;
     });
     this.password = '';

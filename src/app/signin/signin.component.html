@@ -1,12 +1,12 @@
 <div>
   <a>{{err}}</a><br/>
-  <form>
-    <ion-input type="text" placeholder="Pseudo" name="pseudo" [(ngModel)]="username"></ion-input>
-    <ion-input type="password" placeholder="Mot de passe" name="password" [(ngModel)]="password"></ion-input>
-    <ion-button (click)="signin()" type="submit">Connexion</ion-button>
+  <form #form="ngForm" (ngSubmit)="signin()">
+    <ion-input type="text" placeholder="Username" name="pseudo" [(ngModel)]="username" required></ion-input>
+    <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="password" required></ion-input>
+    <ion-button [disabled]="form.invalid" type="submit" block>Signin</ion-button>
   </form>
   <p>
-      Besoin d'un compte ? -
-    <a (click)="signup()">Inscrivez-vous</a>
+      Need an account ? -
+    <a class="pointer" (click)="signup()">Signup</a>
   </p>
 </div>

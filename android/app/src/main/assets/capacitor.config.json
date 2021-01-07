@@ -1,7 +1,7 @@
 {
   "appId": "net.hubblenews.app",
   "appName": "HubbleNews",
-  "bundledWebRuntime": false,
+  "bundledWebRuntime": true,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {

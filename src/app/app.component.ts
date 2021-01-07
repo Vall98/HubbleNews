@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LoadingService } from './services/loading.service';
 import { Router } from '@angular/router';
-import { MusicService } from './services/music.service';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +17,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public loadingService: LoadingService,
-    private router: Router,
-    private musicService: MusicService
+    private router: Router
   ) {
     this.initializeApp();
   }
