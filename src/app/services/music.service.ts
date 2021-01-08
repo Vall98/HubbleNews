@@ -11,6 +11,14 @@ const { NativeAudio } = Plugins;
 export class MusicService {
   
   constructor(private platform: Platform) {
+    if (!this.platform.is("desktop")) {
+      NativeAudio.preloadComplex({
+        assetPath: this.AUDIO_SRC,
+        assetId: "audio",
+        volume: this.musicVolume,
+        audioChannelNum: 1
+      });
+    }
   }
   
   AUDIO_SRC = this.platform.is("android") ?  "scifi_pulse_loop" : "../../assets/sounds/Sci-fi_Pulse_Loop.wav";
@@ -19,12 +27,6 @@ export class MusicService {
 
   loadMusic() {
     if (!this.platform.is("desktop")) {
-      NativeAudio.preloadComplex({
-        assetPath: this.AUDIO_SRC,
-        assetId: "audio",
-        volume: this.musicVolume,
-        audioChannelNum: 1
-      });
       NativeAudio.loop({assetId: "audio"});
     } else {
       this.audio = new Audio();

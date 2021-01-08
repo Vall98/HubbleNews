@@ -31,7 +31,10 @@ export class TTSService {
 
   private getVoices() {
     TextToSpeech.getSupportedVoices().then((data) => {
+      console.log(data);
       this.voices = data.voices;
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
@@ -48,7 +51,6 @@ export class TTSService {
   }
 
   startTTS(data: News) {
-    TextToSpeech.getSupportedVoices().then((voices) => console.log(voices));
     this.playing = data.abstract.split(".");
     this.playTTS(0);
   }
@@ -57,7 +59,7 @@ export class TTSService {
     TextToSpeech.stop().finally(() => {
       TextToSpeech.speak({
         text: this.playing[i],
-        locale: "en_US",
+        locale: undefined,
         speechRate: 0.7,
         pitchRate: 1,
         volume: this.speakerVolume,
