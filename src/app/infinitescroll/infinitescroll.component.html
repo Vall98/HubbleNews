@@ -15,7 +15,7 @@
     </ion-item>
     <ion-item-options style="width: 35%;" (ionSwipe)="swipe(list, new)">
       <div style="width: 100%;">
-        <p class="vertical-center" style="margin-left: calc(100% - {{pos}}px); text-align: left; font-size: {{font}}px;">Access article</p>
+        <p class="vertical-center pointer" (click)="swipe(list, new)" style="margin-left: calc(100% - {{pos}}px); text-align: left; font-size: {{font}}px;">Access article</p>
       </div>
     </ion-item-options>
   </ion-item-sliding>

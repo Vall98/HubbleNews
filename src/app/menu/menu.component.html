@@ -17,7 +17,7 @@
               <div class="center-profile">
                 {{userService.user.username}}
                 <p style="margin-top: 5px;">
-                  <a class="pointer" (click)="accessProfile()">See profile</a>
+                  <a class="pointer" routerLink="/profile" (click)="menu.close()">See profile</a>
                 </p>
               </div>
             </div>

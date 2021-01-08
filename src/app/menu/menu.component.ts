@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 import { ModalsService } from '../services/modals.service';
 import { MusicService } from '../services/music.service';
 import { TTSService } from '../services/tts.service';
@@ -11,7 +12,7 @@ import { UserService } from '../services/user.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private modalsService: ModalsService, public userService: UserService, private musicService: MusicService, private ttsService: TTSService) { }
+  constructor(private modalsService: ModalsService, public userService: UserService, private musicService: MusicService, private ttsService: TTSService, public menu: MenuController) { }
 
   music: number = this.musicService.musicVolume * 100;
   speakerVolume: number = this.ttsService.speakerVolume * 100;
@@ -28,9 +29,5 @@ export class MenuComponent implements OnInit {
 
   speakerVolumeChange() {
     this.ttsService.changeSpeakerVolume(this.speakerVolume);
-  }
-
-  accessProfile() {
-
   }
 }

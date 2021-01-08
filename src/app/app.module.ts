@@ -21,6 +21,7 @@ import { NewsdetailsComponent } from './newsdetails/newsdetails.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SignupComponent } from './signup/signup.component';
     InfinitescrollComponent,
     NewsdetailsComponent,
     ToolbarComponent,
-    MenuComponent
+    MenuComponent,
+    ProfileComponent
   ],
   entryComponents: [],
   imports: [

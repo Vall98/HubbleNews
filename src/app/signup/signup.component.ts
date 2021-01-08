@@ -25,7 +25,10 @@ export class SignupComponent implements OnInit {
 
   signup() {
     if (this.passcheck !== this.password) {
-      this.err = "Les mots de passe ne correspondent pas.";
+      this.err = "Passwords are not matching.";
+      return;
+    } else if (!this.userservice.validateEmail(this.email)) {
+      this.err = "Invalid Email.";
       return;
     }
     this.userservice.signup(this.username, this.email, this.password).subscribe((data) => {

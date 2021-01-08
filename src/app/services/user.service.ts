@@ -62,8 +62,17 @@ export class UserService {
     }, (err) => this.router.navigate(['/']));
   }
 
-  updateUser(password: string, newPass: string, email: string): Observable<any> {
-    return this.http.post(this.url + "user/update", { oldPass: password, newPass: newPass, email: email }, this.credentials);
+  updateUser(password: string, newPass: string, email: string, username: string): Observable<any> {
+    return this.http.post(this.url + "user/update", { oldPass: password, newPass: newPass, email: email, username: username }, this.credentials);
+  }
+
+  sendImage(img: string | ArrayBuffer, ext: string) {
+    return this.http.post(this.url + "user/image", { img: img, ext: ext }, this.credentials);
+  }
+
+  validateEmail(email: string): boolean {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   }
 }
 
