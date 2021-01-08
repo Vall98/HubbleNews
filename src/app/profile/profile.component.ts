@@ -22,6 +22,8 @@ export class ProfileComponent implements OnInit {
   confirmPass: string = "";
   oldPass: string = "";
 
+  sendingImage: boolean = false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {}
@@ -32,7 +34,7 @@ export class ProfileComponent implements OnInit {
       allowEditing: true,
       resultType: CameraResultType.DataUrl
     }).then((image) => {
-      const header: String = "data:image/";
+      const header: string = "data:image/";
       this.img = image.dataUrl;
       this.ext = '.' + image.dataUrl.substring(header.length, image.dataUrl.lastIndexOf(";base64"));
     });
@@ -54,9 +56,12 @@ export class ProfileComponent implements OnInit {
   }
 
   sendImage() {
-    if (this.img && this.ext) {
+    if (this.img && this.ext && !this.sendingImage) {
+      this.sendingImage = true;
       this.userService.sendImage(this.img, this.ext).subscribe((data: User) => {
         this.userService.user.img = data.img;
+        this.img = undefined
+        this.sendingImage = false;
       });
     }
   }
