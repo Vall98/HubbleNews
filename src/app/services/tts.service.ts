@@ -31,7 +31,6 @@ export class TTSService {
 
   private getVoices() {
     TextToSpeech.getSupportedVoices().then((data) => {
-      console.log(data);
       this.voices = data.voices;
     }).catch((err) => {
       console.log(err);

@@ -2,13 +2,13 @@ import "@capacitor-community/text-to-speech";
 
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { ToastController } from "@ionic/angular";
 import { News, NewsService } from '../services/news.service';
 import { TTSService } from "../services/tts.service";
+import { UserService } from "../services/user.service";
 
 import { Plugins } from "@capacitor/core";
-import { UserService } from "../services/user.service";
-import { ToastController } from "@ionic/angular";
-const { Browser } = Plugins;
+const { Browser, Share } = Plugins;
 
 @Component({
   selector: 'app-newsdetails',
@@ -61,5 +61,19 @@ export class NewsdetailsComponent implements OnInit {
 
   click() {
     Browser.open({ url: this.data.url });
+  }
+
+  share() {
+    Share.share({
+      title: "I've seen this super article on the HubbleNews App! Check it out!",
+      text: "I've seen this super article on the HubbleNews App! Check it out!",
+      url: this.data.url,
+      dialogTitle: 'Eplorate space with others'
+    }).catch(() => {
+      this.toastController.create({
+        message: "The share option is not available in your browser, use the mobil app!",
+        duration: 2000
+      }).then((toast) => toast.present());
+    });
   }
 }
