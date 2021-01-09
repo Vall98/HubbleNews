@@ -3,10 +3,10 @@
   <form #form="ngForm" (ngSubmit)="signin()">
     <ion-input type="text" placeholder="Username" name="pseudo" [(ngModel)]="username" required></ion-input>
     <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="password" required></ion-input>
-    <ion-button [disabled]="form.invalid" type="submit" block>Signin</ion-button>
+    <ion-button [disabled]="form.invalid" type="submit" block>Sign in</ion-button>
   </form>
   <p>
       Need an account ? -
-    <a class="pointer" (click)="signup()">Signup</a>
+    <a class="pointer" (click)="signup()">Sign up</a>
   </p>
 </div>

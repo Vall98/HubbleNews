@@ -2,7 +2,7 @@
   <ion-content>
     <h1 class="title">HubbleNews</h1>
     <div class="signin" *ngIf="!userService.connected">
-      <ion-button fill="outline" style="margin: auto;" (click)="signin()">Signin</ion-button>
+      <ion-button fill="outline" style="margin: auto;" (click)="signin()">Sign in</ion-button>
     </div>
     <div *ngIf="userService.connected" style="width: 85%; margin: auto;">
       <ion-grid>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { ModalsService } from '../services/modals.service';
 import { UserService } from '../services/user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private userservice: UserService, private modalsService: ModalsService) { }
+  constructor(private userservice: UserService, private modalsService: ModalsService, private toastController: ToastController) { }
 
   username: string = "";
   password: string = "";
@@ -23,7 +24,10 @@ export class SigninComponent implements OnInit {
       this.userservice.user = data.user;
       this.userservice.saveToken(data.token);
       this.username = "";
-      //this.alertService.set("success", "Vous êtes connecté !", 2000);
+      this.toastController.create({
+        message: "You are connected !",
+        duration: 2000
+      }).then((toast) => toast.present());
       this.modalsService.signinModal.dismiss();
     }, (err) => {
       this.err = err.error.message;

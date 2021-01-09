@@ -9,16 +9,19 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  url: string = "https://ts3.wondercube.fr/api/hubblesite/";
+  url: string = "https://ts3.wondercube.fr/api/";
 
   loadData(page: number): Observable<any> {
-    return this.http.get(this.url + "news?page=" + page);
+    return this.http.get(this.url + "hubblesite/news?page=" + page);
   }
 
   loadNew(id: string): Observable<any> {
-    return this.http.get(this.url + "news_release?id=" + id);
+    return this.http.get(this.url + "hubblesite/news_release?id=" + id);
   }
 
+  loadComments(id: string): Observable<any> {
+    return this.http.get(this.url + "news/comments?id=" + id);
+  }
 }
 
 export class News {
@@ -30,4 +33,14 @@ export class News {
   abstract: string;
   thumbnail_2x: string;
   keystone_image_2x: string;
+}
+
+export class Comment {
+  article_id: string;
+  comment: string;
+  updatedAt: string;
+  user: {
+    username: string,
+    img: string
+  };
 }

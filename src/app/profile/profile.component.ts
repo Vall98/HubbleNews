@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User, UserService } from '../services/user.service';
 import { Plugins, CameraResultType } from '@capacitor/core';
+import { ToastController } from '@ionic/angular';
 
 const { Camera } = Plugins;
 
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
 
   sendingImage: boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toastController: ToastController) { }
 
   ngOnInit() {}
 
@@ -40,21 +41,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  loadImageFromDevice(event) {
-    if (event.target.files && event.target.files[0]) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.img = reader.result;
-        this.ext = file.name.substring(file.name.lastIndexOf('.'), file.name.length) || "";
-      };
-    
-      reader.onerror = (error) => {
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
   sendImage() {
     if (this.img && this.ext && !this.sendingImage) {
       this.sendingImage = true;
@@ -62,6 +48,10 @@ export class ProfileComponent implements OnInit {
         this.userService.user.img = data.img;
         this.img = undefined
         this.sendingImage = false;
+        this.toastController.create({
+          message: "Your profile's picture has been updated !",
+          duration: 2000
+        }).then((toast) => toast.present());
       });
     }
   }
@@ -73,6 +63,10 @@ export class ProfileComponent implements OnInit {
     else {
       this.userService.updateUser(this.oldPass, this.newPass, this.email, this.username).subscribe((data) => {
         this.userService.user = data.user;
+        this.toastController.create({
+          message: "Your profile has been updated !",
+          duration: 2000
+        }).then((toast) => toast.present());
       });
       this.err = "";
       this.newPass = "";

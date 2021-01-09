@@ -2,10 +2,12 @@ import "@capacitor-community/text-to-speech";
 
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { News } from '../services/news.service';
+import { News, NewsService } from '../services/news.service';
 import { TTSService } from "../services/tts.service";
 
 import { Plugins } from "@capacitor/core";
+import { UserService } from "../services/user.service";
+import { ToastController } from "@ionic/angular";
 const { Browser } = Plugins;
 
 @Component({
@@ -14,10 +16,12 @@ const { Browser } = Plugins;
   styleUrls: ['./newsdetails.component.scss'],
 })
 export class NewsdetailsComponent implements OnInit {
-
-  constructor(private router: Router, private ttsService: TTSService) { }
-
+  
+  constructor(private router: Router, private ttsService: TTSService, private newService: NewsService, public userService: UserService, private toastController: ToastController) { }
+  
   data: News;
+  comments: Comment[];
+  newComment: string;
 
   ngOnInit() {
     this.router.events.subscribe((val) => {
@@ -27,11 +31,31 @@ export class NewsdetailsComponent implements OnInit {
          this.ttsService.startTTS(this.data);
          if (this.data.news_id == undefined) {
            this.router.navigateByUrl('/home');
+           return;
          }
+         this.initComments();
         } else {
           this.ttsService.stopTTS();
         }
       }
+    });
+  }
+
+  initComments() {
+    this.newService.loadComments(this.data.news_id).subscribe((data: Comment[]) => {
+      this.comments = data;
+    });
+  }
+
+  leaveComment() {
+    if (!this.userService.connected) return;
+    this.userService.leaveComment(this.data.news_id, this.newComment).subscribe(() => {
+      this.initComments();
+      this.newComment = undefined;
+      this.toastController.create({
+        message: "Comment sent !",
+        duration: 2000
+      }).then((toast) => toast.present());
     });
   }
 
