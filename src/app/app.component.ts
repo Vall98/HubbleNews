@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LoadingService } from './services/loading.service';
 import { DeviceService } from './services/device.service';
 import { Router } from '@angular/router';
+import { ToastController } from "@ionic/angular";
 
 import {
   Plugins,
@@ -28,7 +29,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     public loadingService: LoadingService,
     public deviceService: DeviceService,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {
     this.initializeApp();
     this.initializeNotifications();
@@ -53,13 +55,16 @@ export class AppComponent {
       this.deviceService.registerToken(token.value);
     });
     PushNotifications.addListener('registrationError', (error: any) => {
-      alert('Error on registration: ' + JSON.stringify(error));
+      alert('Error, please check your internet connection. Contact the team if it does not solve the issue.');
     });
     PushNotifications.addListener('pushNotificationReceived', (notification: PushNotification) => {
-      alert('Push received: ' + JSON.stringify(notification));
+      this.toastController.create({
+        message: notification.title,
+        duration: 2000
+      }).then((toast) => toast.present());
     });
     PushNotifications.addListener('pushNotificationActionPerformed', (notification: PushNotificationActionPerformed) => {
-      alert('Push action performed: ' + JSON.stringify(notification));
+      //alert('Push action performed: ' + JSON.stringify(notification));
     });
   }
 }

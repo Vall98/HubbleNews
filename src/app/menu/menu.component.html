@@ -1,7 +1,7 @@
 <ion-menu side="end" menuId="menu" contentId="main-router">
   <ion-content>
     <h1 class="title">HubbleNews</h1>
-    <div class="signin" *ngIf="!userService.connected">
+    <div class="center" *ngIf="!userService.connected">
       <ion-button fill="outline" style="margin: auto;" (click)="signin()">Sign in</ion-button>
     </div>
     <div *ngIf="userService.connected" style="width: 85%; margin: auto;">
@@ -25,6 +25,10 @@
         </ion-row>
       </ion-grid>
       <a class="pointer logout" (click)="userService.logout()">Logout</a>
+    </div>
+    <div class="center">
+      <br/>
+      <ion-button fill="outline" style="margin: auto;" (click)="menu.close()" routerLink='/iss'>ISS stream</ion-button>
     </div>
     <ion-range pin="true" min="0" max="100" color="secondary" [(ngModel)]="music" (ionChange)="musicChange()">
       <ion-label slot="start">Music</ion-label>
