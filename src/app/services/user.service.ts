@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { DeviceService } from './device.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class UserService {
   meObsrv: Observable<any>;
   tokenObsrv: Promise<string> = this.storage.get('hubble_token');
   
-  constructor(private http: HttpClient, private router: Router, private storage: Storage) {
+  constructor(private http: HttpClient, private router: Router, private storage: Storage, private deviceService: DeviceService) {
     this.tokenObsrv.then((token) => {
       if (token) {
         this.credentials = { headers: new HttpHeaders({Authorization: token}) };
@@ -47,19 +48,11 @@ export class UserService {
   }
 
   signin(login: string, password: string): Observable<any> {
-    return this.http.post(this.url + "signin", {username: login, password: password}, this.credentials);
+    return this.http.post(this.url + "signin", {username: login, password: password, deviceToken: this.deviceService.uuid});
   }
 
   signup(login: string, email:string, password: string): Observable<any> {
-    return this.http.post(this.url + "signup", {username: login, password: password, email: email});
-  }
-
-  signout(): void {
-    this.http.get(this.url + "logout", this.credentials).subscribe((data) => {
-      this.connected = false;
-      this.user = null;
-      this.router.navigate(['/']);
-    }, (err) => this.router.navigate(['/']));
+    return this.http.post(this.url + "signup", {username: login, password: password, email: email, deviceToken: this.deviceService.uuid});
   }
 
   updateUser(password: string, newPass: string, email: string, username: string): Observable<any> {

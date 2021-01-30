@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "404057458940",
+    "project_id": "hubblenews-3efcd",
+    "storage_bucket": "hubblenews-3efcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404057458940:android:a7da77851671e710ff2f79",
+        "android_client_info": {
+          "package_name": "net.hubblenews.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404057458940-f7se9chv4dr5sl7ivl9alg838ha75amp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7WCDa2E7t3A56QOKrhDeCHBDkctSxC14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404057458940-f7se9chv4dr5sl7ivl9alg838ha75amp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
