@@ -31,6 +31,9 @@ export class SignupComponent implements OnInit {
     } else if (!this.userservice.validateEmail(this.email)) {
       this.err = "Invalid Email.";
       return;
+    } else if (!this.userservice.validateUsername(this.username)) {
+      this.err = "Invalid Username.";
+      return;
     }
     this.userservice.signup(this.username, this.email, this.password).subscribe((data) => {
       this.userservice.connected = true;

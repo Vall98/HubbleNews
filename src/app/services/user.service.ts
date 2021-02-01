@@ -68,6 +68,11 @@ export class UserService {
     return re.test(String(email).toLowerCase());
   }
 
+  validateUsername(username: string): boolean {
+    var re = /^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9_]+(?<![_.])$/;
+    return re.test(String(username).toLowerCase());
+  }
+
   leaveComment(id: string, comment: string) {
     return this.http.post(this.url + "news/comment", {id: id, comment: comment}, this.credentials);
   }

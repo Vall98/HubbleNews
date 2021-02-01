@@ -27,13 +27,13 @@ export class NewsdetailsComponent implements OnInit {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd){
         if (val.url == "/newsdetails") {
-         this.data = history.state.news;
-         this.ttsService.startTTS(this.data);
-         if (this.data.news_id == undefined) {
-           this.router.navigateByUrl('/home');
-           return;
-         }
-         this.initComments();
+          this.data = history.state.news;
+          if (!this.data || !this.data.news_id) {
+            this.router.navigateByUrl('/home');
+            return;
+          }
+          this.ttsService.startTTS(this.data);
+          this.initComments();
         } else {
           this.ttsService.stopTTS();
         }
@@ -68,7 +68,7 @@ export class NewsdetailsComponent implements OnInit {
       title: "I've seen this super article on the HubbleNews App! Check it out!",
       text: "I've seen this super article on the HubbleNews App! Check it out!",
       url: this.data.url,
-      dialogTitle: 'Eplorate space with others'
+      dialogTitle: 'Explorate space with others'
     }).catch(() => {
       this.toastController.create({
         message: "The share option is not available in your browser, use the mobil app!",
