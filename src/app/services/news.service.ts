@@ -6,21 +6,29 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NewsService {
-
+  
   constructor(private http: HttpClient) { }
-
+  
+  news: News[] = [];
+  
   url: string = "https://ts3.wondercube.fr/api/";
-
+  
   loadData(page: number): Observable<any> {
     return this.http.get(this.url + "hubblesite/news?page=" + page);
   }
-
+  
   loadNew(id: string): Observable<any> {
     return this.http.get(this.url + "hubblesite/news_release?id=" + id);
   }
-
+  
   loadComments(id: string): Observable<any> {
     return this.http.get(this.url + "news/comments?id=" + id);
+  }
+
+  getNewsById(id: string): News {
+    return this.news.find(n => {
+      return n.news_id == id;
+    });
   }
 }
 
@@ -36,6 +44,7 @@ export class News {
 }
 
 export class Comment {
+  id: number;
   article_id: string;
   comment: string;
   updatedAt: string;

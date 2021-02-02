@@ -1,5 +1,5 @@
 <ion-list #list>
-  <ion-item-sliding (ionDrag)="drag($event, new)" *ngFor="let new of news">
+  <ion-item-sliding (ionDrag)="drag($event, new)" *ngFor="let new of newsService.news">
     <ion-item>
       <ion-card style="width: 100%; text-align: center;">
         <ion-card-header>

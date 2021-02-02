@@ -1,8 +1,8 @@
 import "@capacitor-community/text-to-speech";
 
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { ToastController } from "@ionic/angular";
+import { IonContent, ToastController } from "@ionic/angular";
 import { News, NewsService } from '../services/news.service';
 import { TTSService } from "../services/tts.service";
 import { UserService } from "../services/user.service";
@@ -15,22 +15,28 @@ const { Browser, Share } = Plugins;
   templateUrl: './newsdetails.component.html',
   styleUrls: ['./newsdetails.component.scss'],
 })
-export class NewsdetailsComponent implements OnInit {
-  
+export class NewsdetailsComponent implements OnInit, AfterContentChecked {
+  @ViewChild(IonContent, null) content: IonContent;
+
   constructor(private router: Router, private ttsService: TTSService, private newService: NewsService, public userService: UserService, private toastController: ToastController) { }
   
   data: News;
   comments: Comment[];
   newComment: string;
+  scrollId: string;
 
   ngOnInit() {
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd){
-        if (val.url == "/newsdetails") {
+        let url = val.url.split("#");
+        if (url[0] == "/newsdetails") {
           this.data = history.state.news;
           if (!this.data || !this.data.news_id) {
             this.router.navigateByUrl('/home');
             return;
+          }
+          if (url.length > 1) {
+            this.scrollId = url[1];
           }
           this.ttsService.startTTS(this.data);
           this.initComments();
@@ -39,6 +45,18 @@ export class NewsdetailsComponent implements OnInit {
         }
       }
     });
+  }
+
+  ngAfterContentChecked() {
+    if (this.scrollId && document.getElementById(this.scrollId)) {
+      this.scrollTo(this.scrollId);
+      this.scrollId = undefined;
+    }
+  }
+
+  scrollTo(element: string): void {
+    let yOffset = document.getElementById(element).getBoundingClientRect().top;
+    this.content.scrollByPoint(0, yOffset, 1500);
   }
 
   initComments() {

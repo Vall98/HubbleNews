@@ -58,7 +58,7 @@ export class AppComponent {
       alert('Error, please check your internet connection. Contact the team if it does not solve the issue.');
     });
     PushNotifications.addListener('pushNotificationReceived', (notification: PushNotification) => {
-      this.notificationService.toast(notification.title);
+      this.notificationService.toast(notification.title, notification.data);
     });
     PushNotifications.addListener('pushNotificationActionPerformed', (notification: PushNotificationActionPerformed) => {
       //alert('Push action performed: ' + JSON.stringify(notification));

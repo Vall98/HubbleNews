@@ -20,7 +20,6 @@ export class InfinitescrollComponent implements OnInit {
     this.loadData(undefined);
   }
 
-  news: News[] = [];
   page: number = 1;
   
   pos: number = 0;
@@ -33,12 +32,12 @@ export class InfinitescrollComponent implements OnInit {
         return;
       }
       this.page += 1;
-      let dataLen: number = this.news.length;
+      let dataLen: number = this.newsService.news.length;
       for (let newData of allnews) {
         this.newsService.loadNew(newData.news_id).subscribe((onenew) => {
-          this.news.push(onenew);
-          if (this.news.length == dataLen + allnews.length) {
-            this.news.sort(function (a, b) {
+          this.newsService.news.push(onenew);
+          if (this.newsService.news.length == dataLen + allnews.length) {
+            this.newsService.news.sort(function (a, b) {
               return new Date(b.publication).getTime() - new Date(a.publication).getTime();
             });
           }
