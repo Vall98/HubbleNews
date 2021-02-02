@@ -56,7 +56,7 @@ export class NewsdetailsComponent implements OnInit, AfterContentChecked {
 
   scrollTo(element: string): void {
     let yOffset = document.getElementById(element).getBoundingClientRect().top;
-    this.content.scrollByPoint(0, yOffset, 1500);
+    this.content.scrollByPoint(0, yOffset, 1000);
   }
 
   initComments() {
