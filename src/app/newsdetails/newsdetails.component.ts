@@ -55,7 +55,7 @@ export class NewsdetailsComponent implements OnInit, AfterContentChecked {
   }
 
   scrollTo(element: string): void {
-    let yOffset = document.getElementById(element).getBoundingClientRect().top;
+    let yOffset = document.getElementById(element).getBoundingClientRect().top - document.getElementById('ion-content-root').getBoundingClientRect().top;
     this.content.scrollByPoint(0, yOffset, 1000);
   }
 
