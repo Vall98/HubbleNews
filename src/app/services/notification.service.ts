@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { LoadingService } from './loading.service';
 import { NewsService } from './news.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
-  constructor(private toastController: ToastController, private router: Router, private newsService: NewsService) {
+  constructor(private toastController: ToastController, private router: Router, private newsService: NewsService, private loadService: LoadingService) {
   }
 
-  toast(message: string, data: any) { //click => see more + close button
-    let handler;
+  private async getHandler(message: string, data: any) {
     if (data.page == "/newsdetails") {
-      console.log(this.newsService.getNewsById(data.article).news_id);
-      handler = () => {
-        this.router.navigate([data.page], { fragment: data.anchor, state: { news: this.newsService.getNewsById(data.article) } });
-      };
+      let news_data = await this.newsService.loadNew(data.article).toPromise();
+      return () => { this.router.navigate([data.page], { fragment: data.anchor, state: { news: news_data } }); };
     } else {
-      handler = () => {
-        console.log(data.page);
-      };
+      return () => {console.log(data.page);};
     }
+  }
+
+  async toast(message: string, data: any) { //click => see more + close button
+    let handler = await this.getHandler(message, data);
     this.toastController.create({
       header: 'Notification',
       message: message,
@@ -41,5 +41,11 @@ export class NotificationService {
         }
       ]
     }).then((toast) => toast.present());
+  }
+
+  tap(message: string, data: any) {
+    this.loadService.touchedObservable.subscribe(() => {
+      this.getHandler(message, data).then((handler) => handler());
+    });
   }
 }

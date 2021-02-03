@@ -24,12 +24,6 @@ export class NewsService {
   loadComments(id: string): Observable<any> {
     return this.http.get(this.url + "news/comments?id=" + id);
   }
-
-  getNewsById(id: string): News {
-    return this.news.find(n => {
-      return n.news_id == id;
-    });
-  }
 }
 
 export class News {

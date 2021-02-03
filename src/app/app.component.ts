@@ -61,7 +61,7 @@ export class AppComponent {
       this.notificationService.toast(notification.title, notification.data);
     });
     PushNotifications.addListener('pushNotificationActionPerformed', (notification: PushNotificationActionPerformed) => {
-      //alert('Push action performed: ' + JSON.stringify(notification));
+      this.notificationService.tap(notification.notification.title, notification.notification.data);
     });
   }
 }
