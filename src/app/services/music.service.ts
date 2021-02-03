@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
-
+import { Storage } from '@ionic/storage';
 import { Plugins } from "@capacitor/core";
+
 const { NativeAudio } = Plugins;
 
 
@@ -9,20 +10,30 @@ const { NativeAudio } = Plugins;
   providedIn: 'root'
 })
 export class MusicService {
+
+  volumeObsrv: Promise<number> = this.storage.get('hubble_music_volume');
   
-  constructor(private platform: Platform) {
-    if (!this.platform.is("desktop")) {
-      NativeAudio.preloadComplex({
-        assetPath: this.AUDIO_SRC,
-        assetId: "audio",
-        volume: this.musicVolume,
-        audioChannelNum: 1
-      });
-    }
+  constructor(private platform: Platform, private storage: Storage) {
+    this.volumeObsrv.then((volume) => {
+      if (volume == undefined || volume == null || volume < 0) {
+        this.musicVolume = 0.5;
+        this.saveVolume();
+      } else {
+        this.musicVolume = volume;
+      }
+      if (!this.platform.is("desktop")) {
+        NativeAudio.preloadComplex({
+          assetPath: this.AUDIO_SRC,
+          assetId: "audio",
+          volume: this.musicVolume,
+          audioChannelNum: 1
+        });
+      }
+    })
   }
   
   AUDIO_SRC = this.platform.is("android") ?  "scifi_pulse_loop" : "../../assets/sounds/Sci-fi_Pulse_Loop.wav";
-  musicVolume: number = 0.5;
+  musicVolume: number;
   audio: HTMLAudioElement;
 
   loadMusic() {
@@ -49,5 +60,10 @@ export class MusicService {
     } else {
       this.audio.volume = this.musicVolume;
     }
+    this.saveVolume();
+  }
+
+  private saveVolume() {
+    this.storage.set('hubble_music_volume', this.musicVolume);
   }
 }

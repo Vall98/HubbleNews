@@ -4,7 +4,6 @@ import { AfterContentChecked, Component, OnInit, ViewChild } from '@angular/core
 import { NavigationEnd, Router } from '@angular/router';
 import { IonContent, ToastController } from "@ionic/angular";
 import { News, NewsService } from '../services/news.service';
-import { TTSService } from "../services/tts.service";
 import { UserService } from "../services/user.service";
 
 import { Plugins } from "@capacitor/core";
@@ -18,7 +17,7 @@ const { Browser, Share } = Plugins;
 export class NewsdetailsComponent implements OnInit, AfterContentChecked {
   @ViewChild(IonContent, null) content: IonContent;
 
-  constructor(private router: Router, private ttsService: TTSService, private newService: NewsService, public userService: UserService, private toastController: ToastController) { }
+  constructor(private router: Router, private newService: NewsService, public userService: UserService, private toastController: ToastController) { }
   
   data: News;
   comments: Comment[];
@@ -38,10 +37,7 @@ export class NewsdetailsComponent implements OnInit, AfterContentChecked {
           if (url.length > 1) {
             this.scrollId = url[1];
           }
-          this.ttsService.startTTS(this.data);
           this.initComments();
-        } else {
-          this.ttsService.stopTTS();
         }
       }
     });

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Plugins } from '@capacitor/core';
 
 const { Device, Geolocation } = Plugins;

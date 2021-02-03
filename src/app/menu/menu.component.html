@@ -35,21 +35,5 @@
       <ion-label slot="start">0</ion-label>
       <ion-label slot="end">100</ion-label>
     </ion-range>
-    <ion-range pin="true" min="0" max="100" color="secondary" [(ngModel)]="speakerVolume" (ionChange)="speakerVolumeChange()">
-      <ion-label slot="start">Speaker</ion-label>
-      <ion-label slot="start">0</ion-label>
-      <ion-label slot="end">100</ion-label>
-    </ion-range>
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Speaker's voice</ion-label>
-      </ion-list-header>
-      <ion-item *ngIf="ttsService.voices && ttsService.voices.length > 0">
-        <ion-select interface="action-sheet" [value]="ttsService.voice" okText="Select" cancelText="Dismiss" [(ngModel)]="ttsService.voice">
-          <ion-select-option *ngFor="let v of ttsService.voices; let i = index" [value]="i">{{v.name}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    
-    </ion-list>
   </ion-content>
 </ion-menu>
