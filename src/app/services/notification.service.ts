@@ -15,6 +15,8 @@ export class NotificationService {
     if (data.page == "/newsdetails") {
       let news_data = await this.newsService.loadNew(data.article).toPromise();
       return () => { this.router.navigate([data.page], { fragment: data.anchor, state: { news: news_data } }); };
+    } else if (data.page == "/iss") {
+      return () => { this.router.navigate([data.page]); };
     } else {
       return () => {console.log(data.page);};
     }
