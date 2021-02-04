@@ -21,8 +21,8 @@
   <br/>
   <form #commentForm="ngForm" *ngIf="userService.connected" (ngSubmit)="leaveComment()">
     <ion-item class="comment-input-item">
-      <ion-textarea class="comment-input" type="text" placeholder="Comment" name="comment" [(ngModel)]="newComment" required></ion-textarea>
-      <ion-button fill='clear' class="comment-button" [disabled]="commentForm.invalid" type="submit" block>
+      <ion-textarea class="comment-input" type="text" placeholder="Type your comment here" name="comment" [(ngModel)]="newComment" required></ion-textarea>
+      <ion-button class="icon-send-comment" fill='clear' class="comment-button" [disabled]="commentForm.invalid" type="submit" block>
         <ion-icon lazy="true" name="send-outline"></ion-icon>
       </ion-button>
     </ion-item>

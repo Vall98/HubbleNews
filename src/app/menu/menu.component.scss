@@ -4,8 +4,8 @@
 
 .title {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 35px;
+    margin-bottom: 35px;
 }
 
 .avatar {
@@ -28,4 +28,24 @@
     margin: 0;
     position: absolute;
     top: calc(50% - 20px);
+}
+
+.connected-profile {
+    width: 85%;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.sign-in-button {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.iss-stream-button {
+    padding: auto;
+    position: fixed;
+    bottom: 40px;
+    left: 60px;
+    right: 60px;
 }

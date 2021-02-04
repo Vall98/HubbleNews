@@ -1,15 +1,15 @@
 <ion-content>
   <img class="img" [src]="img" (click)="loadImageFromCamera()"/>
-  <ion-grid class="grid-button-article">
+  <ion-grid>
     <ion-row>
+      <ion-col>
+        <ion-button class="source-button" fill="outline" [disabled]="sendingImage || !img || img == userService.user.img" (click)="sendImage()">Update</ion-button>
+      </ion-col>
       <ion-col>
         <ion-button class="pic-button" fill="outline" (click)="loadImageFromCamera()">
           <ion-icon lazy="true" slot="start" name="image"></ion-icon>
           <ion-label slot="end">Choose picture</ion-label>
         </ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button class="source-button" fill="outline" [disabled]="sendingImage || !img || img == userService.user.img" (click)="sendImage()">Update</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

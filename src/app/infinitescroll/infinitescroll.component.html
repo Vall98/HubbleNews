@@ -6,7 +6,6 @@
           <ion-card-title class="news-title">{{new.name}}</ion-card-title>
           <div routerLink="/newsdetails" [state]="{ news: new }" class="pointer image-container">
             <img class="thumbnail" [src]="new.thumbnail_2x"/>
-            <img class="image-click" src="../../assets/img/click.png"/>
           </div>
           <ion-card-subtitle>{{new.mission}} - {{new.publication | date:'dd/MM/yyyy'}}</ion-card-subtitle>
           <ion-card-subtitle>Swipe to the left to access article</ion-card-subtitle>

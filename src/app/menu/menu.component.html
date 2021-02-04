@@ -2,9 +2,9 @@
   <ion-content>
     <h1 class="title">HubbleNews</h1>
     <div class="center" *ngIf="!userService.connected">
-      <ion-button fill="outline" style="margin: auto;" (click)="signin()">Sign in</ion-button>
+      <ion-button class="sign-in-button" fill="outline"  (click)="signin()">Sign in</ion-button>
     </div>
-    <div *ngIf="userService.connected" style="width: 85%; margin: auto;">
+    <div class="connected-profile" *ngIf="userService.connected">
       <ion-grid>
         <ion-row>
           <ion-col size="4">
@@ -26,14 +26,13 @@
       </ion-grid>
       <a class="pointer logout" (click)="userService.logout()">Logout</a>
     </div>
-    <div class="center">
-      <br/>
-      <ion-button fill="outline" style="margin: auto;" (click)="menu.close()" routerLink='/iss'>ISS stream</ion-button>
-    </div>
     <ion-range pin="true" min="0" max="100" color="secondary" [(ngModel)]="music" (ionChange)="musicChange()">
       <ion-label slot="start">Music</ion-label>
       <ion-label slot="start">0</ion-label>
       <ion-label slot="end">100</ion-label>
     </ion-range>
+    <div>
+      <ion-button class="iss-stream-button" fill="outline"  (click)="menu.close()" routerLink='/iss'>ISS stream</ion-button>
+    </div>
   </ion-content>
 </ion-menu>
