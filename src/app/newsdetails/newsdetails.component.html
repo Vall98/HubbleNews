@@ -19,6 +19,14 @@
   </ion-grid>
   <br/>
   <br/>
+  <form #commentForm="ngForm" *ngIf="userService.connected" (ngSubmit)="leaveComment()">
+    <ion-item class="comment-input-item">
+      <ion-textarea class="comment-input" type="text" placeholder="Comment" name="comment" [(ngModel)]="newComment" required></ion-textarea>
+      <ion-button fill='outline' class="comment-button" [disabled]="commentForm.invalid" type="submit" block>
+        <ion-icon lazy="true" name="send-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </form>
   <ion-list>
     <ion-list-header>
       Comments
@@ -41,13 +49,5 @@
     </ion-item>
   </ion-list>
   <br/>
-  <form #commentForm="ngForm" *ngIf="userService.connected" (ngSubmit)="leaveComment()">
-    <ion-item class="comment-input-item">
-      <ion-textarea class="comment-input" type="text" placeholder="Comment" name="comment" [(ngModel)]="newComment" required></ion-textarea>
-    </ion-item>
-    <ion-button fill='outline' class="comment-button" [disabled]="commentForm.invalid" type="submit" block>
-      <ion-icon lazy="true" name="send-outline"></ion-icon>
-    </ion-button>
-  </form>
 </ion-content>
 <br/>
