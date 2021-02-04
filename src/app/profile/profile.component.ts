@@ -12,7 +12,7 @@ const { Camera } = Plugins;
 })
 export class ProfileComponent implements OnInit {
 
-  img: string | ArrayBuffer;
+  img: string | ArrayBuffer = this.userService.user.img;
   ext: string;
 
   err: string = "";
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   loadImageFromCamera() {
     Camera.getPhoto({
       quality: 90,
-      allowEditing: true,
+      allowEditing: false,
       resultType: CameraResultType.DataUrl
     }).then((image) => {
       const header: string = "data:image/";
@@ -42,11 +42,11 @@ export class ProfileComponent implements OnInit {
   }
 
   sendImage() {
-    if (this.img && this.ext && !this.sendingImage) {
+    if (this.img && this.ext && !this.sendingImage && this.img != this.userService.user.img) {
       this.sendingImage = true;
       this.userService.sendImage(this.img, this.ext).subscribe((data: User) => {
         this.userService.user.img = data.img;
-        this.img = undefined
+        this.img = this.userService.user.img;
         this.sendingImage = false;
         this.toastController.create({
           message: "Your profile's picture has been updated !",
