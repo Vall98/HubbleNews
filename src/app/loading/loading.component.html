@@ -1,9 +1,9 @@
 <div class="wrapper" (click)="onTouch()">
   <div class="loading">
-    <h1>Bienvenue</h1>
+    <h1 class="welcome-text">Welcome</h1>
     <div id="deviceready" class="blink" [ngClass]="{'ready': (ready && networkStatus)}"><!--Add class ready-->
-        <p class="event listening">Chargement</p>
-        <p class="event received">Touchez l'écran</p>
+        <p class="event listening">Loading</p>
+        <p class="event received">Touch to continue</p>
     </div>
   </div>
 </div>

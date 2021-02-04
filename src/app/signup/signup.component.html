@@ -1,14 +1,29 @@
-<div>
+<div class="container">
   <a>{{err}}</a><br/>
+  <div class="title-item">
+    <ion-text class="title">
+      SIGN UP
+    </ion-text>
+  </div>
   <form #form="ngForm" (ngSubmit)="signup()">
-    <ion-input type="text" name="user" placeholder="Username" [(ngModel)]="username" required></ion-input>
-    <ion-input type="text" name="email" placeholder="Email" [(ngModel)]="email" required></ion-input>
-    <ion-input type="password" name="pass" placeholder="Password" [(ngModel)]="password" required></ion-input>
-    <ion-input type="password" name="pass2" placeholder="Password check" [(ngModel)]="passcheck" required></ion-input>
-    <ion-button [disabled]="form.invalid" type="submit" block>Sign up</ion-button>
+    <ion-item class="item-label">
+      <ion-input type="text" name="user" placeholder="Username" [(ngModel)]="username" required></ion-input>
+    </ion-item>
+    <ion-item class="item-label">
+      <ion-input type="text" name="email" placeholder="Email" [(ngModel)]="email" required></ion-input>
+    </ion-item>
+    <ion-item class="item-label">
+      <ion-input type="password" name="pass" placeholder="Password" [(ngModel)]="password" required></ion-input>
+    </ion-item>
+    <ion-item class="item-label">
+      <ion-input type="password" name="pass2" placeholder="Confirm password" [(ngModel)]="passcheck" required></ion-input>
+    </ion-item>
+    <ion-button class="confirm-button" [disabled]="form.invalid" type="submit" block>Sign up</ion-button>
   </form>
-  <p>
+  <p class="sign-in-info">
+    <ion-text class="sign-in-text">
       Already registered ? - 
+    </ion-text>
     <a class="pointer" (click)="signin()">Sign in</a>
   </p>
 </div>

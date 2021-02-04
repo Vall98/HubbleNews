@@ -2,3 +2,30 @@
     max-width: 400px;
     max-height: 400px;
 }
+
+.info-grid {
+    --background: var(--ion-color-dark-tint)
+}
+
+.label-item {
+    --border-color: var(--ion-color-light-tint);
+}
+
+.label-input {
+    color: var(--ion-color-dark);
+    font-size: 0.9em;
+}
+
+.text-input {
+    color: var(--ion-color-dark);
+    font-size: 0.9em;
+}
+
+
+.col-element {
+    --ion-grid-column-padding: 0;
+}
+
+.divider {
+    color: var(--ion-color-dark);
+}

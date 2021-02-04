@@ -3,7 +3,7 @@
     <ion-item>
       <ion-card style="width: 100%; text-align: center;">
         <ion-card-header>
-          <ion-card-title>{{new.name}}</ion-card-title>
+          <ion-card-title class="news-title">{{new.name}}</ion-card-title>
           <div routerLink="/newsdetails" [state]="{ news: new }" class="pointer image-container">
             <img class="thumbnail" [src]="new.thumbnail_2x"/>
             <img class="image-click" src="../../assets/img/click.png"/>

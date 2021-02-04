@@ -13,56 +13,75 @@
 <form #form="ngForm">
   <ion-grid>
     <ion-row>
-      <ion-col>
-        <ion-label>Username</ion-label>
+      <ion-col class="col-element" size="5">
+        <ion-item>
+          <ion-label class="label-input">Username</ion-label>
+        </ion-item>
       </ion-col>
-      <ion-col>
-        <ion-input type="text" name="username" placeholder="Username" [(ngModel)]="username" required></ion-input>
+      <ion-col class="col-element" size="7">
+        <ion-item>
+          <ion-input class="text-input" type="text" name="username" placeholder="Username" [(ngModel)]="username" required></ion-input>
+        </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-label>Email</ion-label>
+      <ion-col class="col-element" size="5">
+        <ion-item>
+          <ion-label class="label-input">Email</ion-label>
+        </ion-item>
       </ion-col>
-      <ion-col>
-        <ion-input type="email" name="email" placeholder="Email" [(ngModel)]="email" required></ion-input>
+      <ion-col class="col-element" size="7">
+        <ion-item>
+          <ion-input class="text-input" type="email" name="email" placeholder="Email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="col-element" size="5">
+        <ion-item>
+          <ion-label class="label-input">New password</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col class="col-element" size="7">
+        <ion-item>
+          <ion-input class="text-input" type="password" name="newPass" placeholder="New password" [(ngModel)]="newPass"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="col-element" size="5">
+        <ion-item>
+          <ion-label class="label-input">Confirm password</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col class="col-element" size="7">
+        <ion-item>
+          <ion-input class="text-input" type="password" name="confirmPass" placeholder="Confirm password" [(ngModel)]="confirmPass"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-item-divider class="divider">
+    </ion-item-divider>
+    <ion-row>
+      <ion-col class="col-element" size="5">
+        <ion-item>
+          <ion-label class="label-input">Current password</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col class="col-element" size="7">
+        <ion-item>
+          <ion-input class="text-input" type="password" name="newPass" placeholder="Current password" [(ngModel)]="oldPass" required></ion-input>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-grid>
     <ion-row>
-      <ion-col>
-        <ion-label>Nouveau mot de passe</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-input type="password" name="newPass" placeholder="Nouveau Mot de Passe" [(ngModel)]="newPass"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-label>Confirmation</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-input type="password" name="confirmPass" placeholder="Confirmer le Mot de Passe" [(ngModel)]="confirmPass"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <br/>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-label>Current password</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-input type="password" name="newPass" placeholder="Current password" [(ngModel)]="oldPass" required></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button [disabled]="form.invalid" type="submit" (click)="updateProfile()" block>Valider les changements</ion-button>
-      </ion-col>
       <ion-col>
         <a class="error">{{err}}</a>
+      </ion-col>
+      <ion-col>
+        <ion-button [disabled]="form.invalid" type="submit" (click)="updateProfile()" block>CONFIRM CHANGES</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

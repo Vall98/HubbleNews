@@ -2,10 +2,18 @@
   <div class="container">
     <h1>{{data.name}}</h1> <br/>
     <img [src]="data.keystone_image_2x"> <br/>
-    <p>{{data.abstract}}</p>
+    <p class="article-text">{{data.abstract}}</p>
   </div>
-  <ion-button (click)="click()" fill="outline">Access article</ion-button>
-  <ion-button (click)="share()" fill="outline">Share</ion-button>
+  <ion-grid class="grid-button-article">
+    <ion-row>
+      <ion-col>
+        <ion-button class="source-button" (click)="click()" fill="outline">Access article</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button class="share-button" (click)="share()" fill="outline">Share</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <br/>
   <br/>
   <ion-list>
