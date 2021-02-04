@@ -10,7 +10,10 @@
         <ion-button class="source-button" (click)="click()" fill="outline">Access article</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button class="share-button" (click)="share()" fill="outline"><ion-icon name="share-social-outline"></ion-icon>Share</ion-button>
+        <ion-button class="share-button" (click)="share()" fill="outline">
+          <ion-icon lazy="true" slot="start" name="share-social-outline"></ion-icon>
+          <ion-label slot="end">Share</ion-label>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
