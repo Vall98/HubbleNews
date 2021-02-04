@@ -33,7 +33,8 @@ export class ProfileComponent implements OnInit {
     Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.DataUrl
+      resultType: CameraResultType.DataUrl,
+      promptLabelHeader: "HubbleNews profile picture"
     }).then((image) => {
       const header: string = "data:image/";
       this.img = image.dataUrl;

@@ -1,7 +1,3 @@
-<!-- <ion-card *ngIf="img" style="text-align: center;">
-  <ion-card-header>
-  </ion-card-header>
-</ion-card> -->
 <ion-content>
   <img class="img" [src]="img" (click)="loadImageFromCamera()"/>
   <ion-grid class="grid-button-article">
@@ -13,7 +9,7 @@
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button class="source-button" fill="outline" [disabled]="sendingImage || !img || img == userService.user.img" (click)="sendImage()">Send</ion-button>
+        <ion-button class="source-button" fill="outline" [disabled]="sendingImage || !img || img == userService.user.img" (click)="sendImage()">Update</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -88,7 +84,7 @@
           <a class="error">{{err}}</a>
         </ion-col>
         <ion-col>
-          <ion-button [disabled]="form.invalid" type="submit" (click)="updateProfile()" block>CONFIRM CHANGES</ion-button>
+          <ion-button fill='outline' [disabled]="form.invalid" type="submit" (click)="updateProfile()" block>CONFIRM CHANGES</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

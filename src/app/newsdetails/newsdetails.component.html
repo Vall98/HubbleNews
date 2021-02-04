@@ -10,7 +10,7 @@
         <ion-button class="source-button" (click)="click()" fill="outline">Access article</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button class="share-button" (click)="share()" fill="outline">Share</ion-button>
+        <ion-button class="share-button" (click)="share()" fill="outline"><ion-icon name="share-social-outline"></ion-icon>Share</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -40,7 +40,7 @@
   <br/>
   <form #commentForm="ngForm" *ngIf="userService.connected" (ngSubmit)="leaveComment()">
     <ion-textarea type="text" placeholder="Comment" name="comment" [(ngModel)]="newComment" required></ion-textarea>
-    <ion-button [disabled]="commentForm.invalid" type="submit" block>Send</ion-button>
+    <ion-button fill='outline' [disabled]="commentForm.invalid" type="submit" block>Send</ion-button>
   </form>
 </ion-content>
 <br/>
