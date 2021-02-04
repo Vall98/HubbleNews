@@ -1,6 +1,6 @@
 <ion-content id="ion-content-root" style="text-align: center;" *ngIf="data" [scrollEvents]="true">
   <div class="container">
-    <h1>{{data.name}}</h1> <br/>
+    <h1 class="article-title">{{data.name}}</h1> <br/>
     <img [src]="data.keystone_image_2x"> <br/>
     <p class="article-text">{{data.abstract}}</p>
   </div>
@@ -39,8 +39,10 @@
   </ion-list>
   <br/>
   <form #commentForm="ngForm" *ngIf="userService.connected" (ngSubmit)="leaveComment()">
-    <ion-textarea type="text" placeholder="Comment" name="comment" [(ngModel)]="newComment" required></ion-textarea>
-    <ion-button fill='outline' [disabled]="commentForm.invalid" type="submit" block>Send</ion-button>
+    <ion-item class="comment-input-item">
+      <ion-textarea class="comment-input" type="text" placeholder="Comment" name="comment" [(ngModel)]="newComment" required></ion-textarea>
+    </ion-item>
+    <ion-button fill='outline' class="comment-button" [disabled]="commentForm.invalid" type="submit" block>Send</ion-button>
   </form>
 </ion-content>
 <br/>
