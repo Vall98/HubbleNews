@@ -10,7 +10,7 @@ export class ToolbarComponent implements OnInit {
   
   constructor(private router: Router) { }
 
-  atHome: boolean = true;
+  atHome: boolean = (this.router.url == "/home" || this.router.url == "/");
 
   ngOnInit() {
     this.router.events.subscribe((val) => {
