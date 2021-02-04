@@ -45,7 +45,9 @@
     <ion-item class="comment-input-item">
       <ion-textarea class="comment-input" type="text" placeholder="Comment" name="comment" [(ngModel)]="newComment" required></ion-textarea>
     </ion-item>
-    <ion-button fill='outline' class="comment-button" [disabled]="commentForm.invalid" type="submit" block>Send</ion-button>
+    <ion-button fill='outline' class="comment-button" [disabled]="commentForm.invalid" type="submit" block>
+      <ion-icon lazy="true" name="send-outline"></ion-icon>
+    </ion-button>
   </form>
 </ion-content>
 <br/>
